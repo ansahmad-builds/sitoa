@@ -75,7 +75,7 @@
       allow_google_signals: false,
       allow_ad_personalization_signals: false,
       ...pageData,
-      cookie_domain: location.hostname,
+      cookie_domain: "none", // Host-only: the apex must not share identifiers with subdomains.
       cookie_expires: lifetime / 1000,
       cookie_update: false,
       cookie_flags: "SameSite=Lax" + (location.protocol === "https:" ? ";Secure" : "")
@@ -112,7 +112,7 @@
   document.querySelectorAll("[data-analytics-settings]").forEach(button => button.addEventListener("click", () => {
     previousFocus = button;
     document.getElementById("analytics-state").textContent = !ready
-      ? "Google Analytics is not enabled. The website operator has not yet authorized activation of the prepared consent-only setup."
+      ? "Google Analytics is disabled on this website. No Analytics data is sent to Google."
       : privacySignal ? "Your browser’s privacy signal is respected. Analytics is off."
       : choice === "granted" ? "Analytics is currently allowed. You can withdraw consent below."
       : "Analytics is off. You can keep it off or choose to allow it.";
