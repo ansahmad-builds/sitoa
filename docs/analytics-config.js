@@ -2,6 +2,6 @@
 window.AR_ANALYTICS_CONFIG = Object.freeze({
   measurementId: "G-RQ2C8DV5F3",
   noticeApproved: false,
-  noticeVersion: "2026-09-28",
+  noticeVersion: "2026-09-29",
   privacyUrl: "https://agenticrealities.com/privacy/"
 });

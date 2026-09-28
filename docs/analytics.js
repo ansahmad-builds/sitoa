@@ -60,6 +60,11 @@
     window["ga-disable-" + id] = false;
     window.dataLayer = window.dataLayer || [];
     window.gtag = function () { window.dataLayer.push(arguments); };
+    let referrer = "";
+    try { if (document.referrer) referrer = new URL(document.referrer).origin + "/"; } catch (_) {}
+    const pageData = { page_title: document.title, page_location: location.origin + location.pathname, page_referrer: referrer };
+    // Apply sanitized defaults to automatic events too, not only the manual page view.
+    window.gtag("set", pageData);
     window.gtag("consent", "default", { analytics_storage: "denied", ad_storage: "denied", ad_user_data: "denied", ad_personalization: "denied" });
     window.gtag("set", "ads_data_redaction", true);
     window.gtag("set", "url_passthrough", false);
@@ -69,13 +74,13 @@
       send_page_view: false,
       allow_google_signals: false,
       allow_ad_personalization_signals: false,
+      ...pageData,
       cookie_domain: location.hostname,
       cookie_expires: lifetime / 1000,
-      cookie_update: false
+      cookie_update: false,
+      cookie_flags: "SameSite=Lax" + (location.protocol === "https:" ? ";Secure" : "")
     });
-    let referrer = "";
-    try { if (document.referrer) referrer = new URL(document.referrer).origin + "/"; } catch (_) {}
-    window.gtag("event", "page_view", { page_title: document.title, page_location: location.origin + location.pathname, page_referrer: referrer });
+    window.gtag("event", "page_view", pageData);
     const script = document.createElement("script");
     script.id = "ar-google-tag";
     script.async = true;
@@ -107,7 +112,7 @@
   document.querySelectorAll("[data-analytics-settings]").forEach(button => button.addEventListener("click", () => {
     previousFocus = button;
     document.getElementById("analytics-state").textContent = !ready
-      ? "Google Analytics is not enabled. The analytics setup is waiting for the operator’s privacy details and account review."
+      ? "Google Analytics is not enabled. The website operator has not yet authorized activation of the prepared consent-only setup."
       : privacySignal ? "Your browser’s privacy signal is respected. Analytics is off."
       : choice === "granted" ? "Analytics is currently allowed. You can withdraw consent below."
       : "Analytics is off. You can keep it off or choose to allow it.";
