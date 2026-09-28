@@ -60,7 +60,7 @@ h2 { font-size: clamp(2.4rem, 4.1vw, 3.9rem); line-height: 1.12; }
 .section-heading > p:last-child:not(.eyebrow) { max-width: 43rem; margin-top: 1.5rem; color: var(--muted); font-size: 1.0625rem; line-height: 1.8; }
 .feature-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; margin-top: 3rem; }
 .glass-card { padding: 2rem 1.6rem; border: 1px solid var(--line); border-radius: 1.3rem; background: linear-gradient(145deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.012)); }
-.card-index { color: var(--muted); font-size: 0.75rem; }
+.card-index { color: var(--muted); font-size: 0.875rem; }
 .glass-card h3 { margin-top: 2.5rem; font-size: 1.5rem; line-height: 1.25; }
 .glass-card p { margin-top: 1rem; color: var(--muted); font-size: 1rem; line-height: 1.7; }
 .workflow { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 2rem; margin: 3rem 0 0; padding: 0; list-style: none; }
@@ -94,7 +94,7 @@ footer .brand { color: var(--text); font-size: 1rem; }
   .brand { font-size: 1.05rem; }
   .brand img { width: 30px; height: 30px; }
   nav { gap: 0; }
-  nav a { padding: 0.65rem 0.5rem; font-size: 0.8125rem; }
+  nav a { padding: 0.65rem 0.5rem; font-size: 0.875rem; }
   .hero { grid-template-columns: 1fr; min-height: 0; padding-block: 4rem 4.5rem; gap: 3rem; }
   h1 { font-size: clamp(2.9rem, 8vw, 4rem); }
   .intro { font-size: 1.0625rem; }
